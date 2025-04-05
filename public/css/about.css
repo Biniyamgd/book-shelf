@@ -1,0 +1,89 @@
+body{
+    background:linear-gradient(to top, rgba(0, 0, 0, 100%), rgba(0, 0, 0, 0)),
+      url('/images/img5.jpg'), no-repeat;
+    background-size: cover;
+    color: orange;
+    height: 100vh;
+}
+
+.nav{
+    background-color:rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:space-between;
+    color:white;
+    align-items:center;
+    position:sticky;
+    width:100%;
+}
+
+.brand img{
+height:20px;
+border-radius:50%;
+margin-left:10px;
+}
+
+.navlinks{
+    display:flex;
+    cursor:pointer;
+}
+
+.navlink div{
+}
+
+.navlinks div a{
+    display:inline-flex;
+    text-decoration:none;
+    color:rgb(210,210,210);
+    padding:10px 20px;
+    min-width:60px;
+    justify-content:center;
+}
+
+.navlinks div a:hover{
+    color:rgb(20,20,20,0.5);
+}
+
+.footer{
+        min-height:200px;
+        background-color:rgba(20,20,20,0.4);
+        padding:10px 6px;
+        margin-top:10px;
+        position:absolute;
+        width:100%;
+        bottom:0;
+    }
+
+    .footer ul{
+        list-style:none;
+    }
+
+    .footer ul li{
+        margin:6px 0;
+    }
+
+    .footer ul li a{
+        text-decoration:none;
+        cursor:pointer;
+    }
+
+    .footer div p{
+        width:max-content;
+        margin:auto;
+        color:rgb(170,100,0,0.9);
+        font-size:small;
+    }
+
+    .contact{
+        display:flex;
+        justify-content:space-between;
+        width:65%;
+    }
+
+    .contact li{
+        padding:10px;
+        margin-left:10px;
+    }
+
+    .contact li a{
+        color:rgb(160,160,160);
+    }

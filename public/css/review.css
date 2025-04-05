@@ -1,0 +1,311 @@
+body{
+
+}
+
+.nav{
+    background-color:rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:space-between;
+    color:white;
+    align-items:center;
+    position:sticky;
+}
+
+.brand img{
+height:20px;
+border-radius:50%;
+margin-left:10px;
+}
+
+.navlinks{
+    display:flex;
+    cursor:pointer;
+}
+
+.navlink div{
+}
+
+.navlinks div a{
+    display:inline-flex;
+    text-decoration:none;
+    color:rgb(210,210,210);
+    padding:10px 20px;
+    min-width:60px;
+    justify-content:center;
+}
+
+.navlinks div a:hover{
+    color:rgb(20,20,20,0.5);
+}
+
+article{
+    display:flex;
+    padding:10px;
+    margin:10px auto;
+}
+
+article img{
+    height:300px;
+    margin:10px auto;
+    border-radius:6px;
+    box-shadow:3px 3px 6px 0.5px black;
+}
+
+article .half{
+    padding:20px;
+}
+
+article button{
+    padding:10px 20px;
+    width:100%;
+    background-color:orange;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:6px;
+    margin-top:10px;
+}
+
+article button:hover{
+    opacity:0.65;
+}
+
+.review-container{
+    background-color:rgba(20,20,20,0.1);
+    padding:10px 6px;
+    margin:10px 0;
+}
+
+.review-container input{
+    background:transparent;
+    outline:none;
+    border:none;
+    margin-left:30px;
+    font-family:sanSerif;
+    color:rgb(80,80,80);
+    padding:6px 10px;
+    width:300px;
+    border:none;
+    font-size:14px;
+}
+
+.review-container input:focus{
+    border-bottom:1px solid rgb(20,20,20,0.1);
+}
+
+.review-container button{
+/*    border:1px solid rgb(20,20,20,0.3);*/
+    border:none;
+    color:rgb(70,70,70);
+    font-size:14px;
+    font-family:Gothic;
+    border-radius:6px;
+    padding:10px 13px;
+    outline:none;
+    margin-left:10px;
+}
+
+.review-container button:hover{
+    background-color:rgb(20,20,20,0.2);
+
+}
+
+.review{
+display:flex;
+margin:6px 0;
+}
+
+.review div p{
+    font-size:small;
+}
+
+.review img{
+    height:20px;
+    padding:3px 2px;
+    border-radius:0 50% 50% 50%;
+    margin-right:10px;
+    background-color:rgb(20,20,20,0.3);
+}
+
+.container{
+    width:100%;
+    position: relative;
+/*    padding: 10px 20px;*/
+/*    margin:20px;*/
+    left:0;
+    overflow:hidden;
+}
+
+.Related{
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    gap:10px;
+    display:flex;
+    white-space: nowrap;
+    width: 100%;
+    margin:20px 4px;
+}
+
+.Related .in{
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    width:35vw;
+}
+
+.Related .in a{
+   text-decoration:none;
+}
+
+.Related .in button{
+    background-color:orange;
+    padding:10px 20px;
+    border-radius:6px;
+    border:none;
+    cursor:pointer;
+}
+
+.Related .in img{
+    height:300px;
+    text-align:center;
+/*    margin-right:30px;*/
+    min-width:200px;
+    }
+
+.footer{
+    min-height:200px;
+    background-color:rgba(20,20,20,0.3);
+    padding:10px 6px;
+    margin-top:10px;
+}
+
+.footer ul{
+    list-style:none;
+}
+
+.footer ul li{
+    margin:6px 0;
+}
+
+.footer ul li a{
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.footer div p{
+    width:max-content;
+    margin:auto;
+    color:rgb(170,100,0,0.9);
+    font-size:small;
+}
+
+.contact{
+    display:flex;
+    justify-content:space-between;
+    width:65%;
+}
+
+.contact li{
+    padding:10px;
+    margin-left:10px;
+
+}
+
+.contact li a{
+    color:rgb(160,160,160);
+}
+
+.str{
+    margin-bottom:80px;
+}
+.star-container {
+            position: relative;
+            display: block;
+            font-size: 40px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Empty Stars */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: lightgray;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+
+        .stars-filled {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: gold;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            max-width:fit-content;
+            transition: width 0.2s;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal textarea {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+        }
+
+        .modal button {
+            margin: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: #ccc;
+        }
+
+        .btn-no-comment {
+            background: #ffcc00;
+        }
+
+        .btn-with-comment {
+            background: #28a745;
+            color: white;
+        }
+
+
+        #selectedRating{
+            margin:0;
+            width:30px;
+            border:none;
+            outline:none;
+            font-size:18px;
+           }

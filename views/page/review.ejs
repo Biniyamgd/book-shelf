@@ -1,0 +1,220 @@
+<!Doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initail-scale=1">
+<link rel="stylesheet" href="/css/review.css"/>
+<link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css">
+<title>Review</title>
+</head>
+<body>
+<div class="nav">
+<section class="brand"><img src="/images/img.jpg" alt="brand"/></section>
+<section class="navlinks">
+    <div><a href="/category">Category</a></div>
+    <div><a href="/about">About</a></div>
+    <div><a href="/trending">Trending</a></div>
+    <div><a href="/toprated">Top Rated</a></div>
+</section>
+</div>
+<div class="body">
+    <article>
+        <div class="half"><img src="/images/gatsby.png" alt="hello.jpg" />
+            <div>Author</div>
+            <div><button>Add to Cart</button></div>
+        </div>
+        <div class="half">
+            <h2>Title of the Book</h2>
+            <p>RATE | <span style="color:orange">6.3</span></p>
+            <p><a href="/category" style="text-decoration:none;color:rgb(160,80,0);"><i class="fas fa-bars"></i> category</a></p>
+            <div>
+                <h3>Description</h3>
+                <p>the content of description</p>
+            </div>
+        </div>
+    </article>
+    <div class="review-container">
+       <div class="str">
+        <h3> Rate </h3>
+        <div class="star-container">
+            <div class="stars">★★★★★</div>
+            <div class="stars-filled">★★★★★</div>
+        </div>
+        <div class="modal-overlay"></div>
+        <div class="modal" id="ratingModal">
+            <h3>Submit Your Rating</h3>
+            <form id="comment-form">
+            <p>You've rated: <input id="selectedRating" type="text" name ="rate" readonly> stars</p>
+            <textarea name="comment" type="text" id="comment" placeholder="Add a comment (optional)">
+            </textarea>
+                <input type="hidden" id="recaptchaToken" name="recaptchaToken">
+                <button class="btn-cancel">Cancel</button>
+                <button class="btn-no-comment" type="submit">Rate without comment</button>
+                <button class="btn-with-comment" type="submit">Rate with comment</button>
+            </form>
+        </div>
+       </div>
+        <!--<input type="text" placeholder="Add comment here"/><button>Comment</button>-->
+        <h2>Reviews</h2>
+        <div class="review">
+        <img src="/images/img10.png" alt="user"/>
+        <div>
+            <span>Rate 6.3</span>
+               <p>This book is the worst.I have never seen this kind of bullshit character build up in my life.</p>
+        </div>
+        </div>
+        <div class="review">
+            <img src="/images/img10.png" alt="user"/>
+            <div>
+            <span>Rate 8.3</span>
+                <p>This book is the best. I recommend it to you all.</p>
+            </div>
+        </div>
+        <div class="review">
+                <img src="/images/img10.png" alt="user"/>
+                <div>
+            <span>Rate 7.3</span>
+                <p>This book is good. you may have no intention to read it but give it a try.</p>
+                </div>
+        </div>
+    </div>
+    <div class="container">
+     <div class="Related">
+        <div class="in">
+            <img src="/images/forest.jpg"/>
+            <div>
+                <h3>Rate | <span style="color:orange">6.3</span></h3>
+            <p>
+            Habits shape our daily lives more than we realize.
+            </p>
+            <a href="/book/1"><button>Review</button></a>
+            </div>
+        </div>
+        <div class="in">
+                <img src="/images/graphic.png"/>
+                <div>
+                    <h3>Rate | <span style="color:orange">6.3</span></h3>
+                <p>
+             Habits shape our daily lives more than we realize.
+                </p>
+                <a href="/book/1"><button>Review</button></a>
+                </div>
+            </div>
+            <div class="in">
+                    <img src="/images/crime.png"/>
+                    <div>
+                        <h3>Rate | <span style="color:orange">6.3</span></h3>
+                    <p>
+              Habits shape our daily lives more than we realize.
+                    </p>
+                    <a href="/book/1"><button>Review</button></a>
+                    </div>
+            </div>
+    </div>
+    </div>
+</div>
+<div class="footer">
+    <ul>
+        <li>
+            Contact Us:
+            <ul class="contact">
+            <li><a href="tel:+251989566114" style="color:gray"><i class="fas fa-phone"></i> +251-989-566-114</a></li>
+            <li><a href="mailto:biniyamgashe@gmail.com" target="_blank" style="color:rgb(40,100,250)"><i class="fas fa-envelope"></i> Email</a></li>
+            <li><a href="https://t.me/Bingashe" target="_blank" style="color:rgb(40,140,200)"><i class="fab fa-telegram"></i> telegram</a></li>
+            <li><a href="https://wa.me/251989566114" target="_blank"  style="color:rgb(40,100,40)"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+            <li><a href="https://www.facebook.com/username" target="_blank" style="color:blue"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/bin.gashe/" target="_blank"  style="color:rgb(180,20,100)"><i class="fab fa-instagram"></i> Instagram</a></li>
+        </ul></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/termandpolicy">Terms and Policies</a></li>
+        <li><a href="/"></a></li>
+    </ul>
+    <div>
+        <p>&copy2025. All rights are Reserved.</p>
+    </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?render=6Ldy0wcrAAAAADDyOVJI7q7fJ8HNTohuGcuiuxV7"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let selectedRating = 0;
+        const starContainer = document.querySelector(".star-container");
+        const starsFilled = document.querySelector(".stars-filled");
+        const modal = document.getElementById("ratingModal");
+        const overlay = document.querySelector(".modal-overlay");
+        const ratingText = document.getElementById("selectedRating");
+        let totrec=starContainer.getBoundingClientRect().width;
+
+    function getRatingFromPosition(event) {
+        let rect = starContainer.getBoundingClientRect();
+        let offsetX = event.clientX - rect.left;
+
+        if (totrec === 0) return 0;
+
+        let percentage = (offsetX)/ totrec;
+        let rating = Number((percentage * 10).toFixed(2));
+        return Math.max(0, Math.min(rating, 10));
+    }
+
+
+
+    starContainer.addEventListener("mousemove", function (event) {
+        let rating = getRatingFromPosition(event);
+        starsFilled.style.width = `${(rating / 10) * 100}%`;
+    });
+
+
+    starContainer.addEventListener("mouseleave", function () {
+        starsFilled.style.width = `${(selectedRating / 10) * 100}%`;
+    });
+
+
+    starContainer.addEventListener("click", function (event) {
+        selectedRating = Math.min(getRatingFromPosition(event)*10, 10);
+        ratingText.value = selectedRating;
+        modal.style.display = "block";
+        overlay.style.display = "block";
+    });
+
+
+    document.querySelector(".btn-cancel").addEventListener("click", function () {
+        modal.style.display = "none";
+        overlay.style.display = "none";
+    });
+
+
+    document.querySelector(".btn-no-comment").addEventListener("click", function () {
+        alert(`Rating Submitted: ${ratingText.value} stars`);
+        modal.style.display = "none";
+        overlay.style.display = "none";
+    });
+
+    document.querySelector(".btn-with-comment").addEventListener("click", function () {
+        let comment = document.getElementById("comment").value;
+        alert(`Rating Submitted: ${ratingText.value} stars with comment: "${comment}"`);
+        modal.style.display = "none";
+        overlay.style.display = "none";
+    });
+});
+const comform = document.getElementById('comment-form');
+                    comform.addEventListener('submit', async function (event) {
+                        event.preventDefault();
+
+                        const token = await grecaptcha.execute('6Ldy0wcrAAAAADDyOVJI7q7fJ8HNTohuGcuiuxV7', { action: 'submit'});
+                        document.getElementById('recaptchaToken').value = token;
+                        const formdata= new FormData(comform);
+                        console.log((formdata));
+                        const urlencoded = new URLSearchParams(formdata).toString();
+                        const response= fetch('/rate',{
+                            method:'post',
+                            headers:{
+                                'content-Type':'application/x-www-form-urlencoded'
+                            },
+                            body:urlencoded
+                        });
+                        if(response.ok){
+
+                        }
+                    });
+</script>
+</body>
+</html>

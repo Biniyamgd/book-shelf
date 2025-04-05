@@ -1,0 +1,133 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="/css/style.css"/>
+        <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css">
+        <title>signup</title>
+    </head>
+    <body>
+       <div>
+           <div class="top"><img src="/images/img8.png" alt="book"/><h1>Phantom Store</h1><img src="/images/img8.png" alt="book"/></div>
+           <div class="nav-container">
+               <div class="navlinks">
+                   <img src="/images/img7.png" alt="hello brother"/>
+                 <ul>
+                     <li><a href="/home">Home</a></li>
+                     <li><a href="/about">About</a></li>
+                     <li><a href="#contact">Contact</a></li>
+                 </ul>
+                 <div class="head"><span><a href="/login">Log In</a></span></div>
+               </div>
+           </div>
+           <div class="body">
+            <div class="login">
+                    <h1>Sign Up</h1>
+
+                <form id="myform">
+                    <div id="responseMessage" class="hidden"></div>
+                    <div class="input">
+                        <label for="name">username</label><br>
+                        <input id="name" name="name" type="text"/>
+                        <i class="minor fas fa-user"></i>
+                    </div>
+                    <div class="input">
+                        <label for="email">email</label><br>
+                        <input id="email" name="email" type="email"/>
+                        <i class="minor fas fa-envelope"></i>
+                    </div>
+                    <div class="input">
+                        <label for="password">password</label><br>
+                        <input id="password" name="password" type="password"/>
+                        <i class="pass minor fas fa-eye" onClick="togglepassword(this)"></i>
+                    </div>
+                    <div class="input">
+                        <label for="confpass">confirm password</label><br>
+                        <input id="confpass" name="confpass" type="password"/>
+                        <i class="pass minor fas fa-eye-slash" onClick="togglepassword(this)"></i>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                    </form>
+            </div>
+           </div>
+       </div>
+
+       <div class="footer">
+           <ul>
+               <li>
+                   Contact Us:
+                   <ul class="contact" id="contact">
+                   <li><a href="tel:+251989566114" target="_blank" style="color:gray"><i class="fas fa-phone"></i> +251-989-566-114</a></li>
+                   <li><a href="mailto:biniyamgashe@gmail.com" target="_blank" style="color:rgb(40,100,250)"><i class="fas fa-envelope"></i> Email</a></li>
+                   <li><a href="https://t.me/Bingashe" target="_blank" style="color:rgb(40,140,200)"><i class="fab fa-telegram"></i> telegram</a></li>
+                   <li><a href="https://wa.me/251989566114" target="_blank"  style="color:rgb(40,100,40)"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                   <li><a href="https://www.facebook.com/username" target="_blank" style="color:blue"><i class="fab fa-facebook"></i> Facebook</a></li>
+                   <li><a href="https://www.instagram.com/bin.gashe/" target="_blank"  style="color:rgb(180,20,100)"><i class="fab fa-instagram"></i> Instagram</a></li>
+               </ul></li>
+               <li><a href="/about">About</a></li>
+               <li><a href="/termandpolicy">Terms and Policies</a></li>
+               <li><a href="/"></a></li>
+           </ul>
+           <div>
+               <p>&copy2025. All rights are Reserved.</p>
+           </div>
+       </div>
+
+    </body>
+
+    <script>
+//        document.onload(togglepassword(document.querySelector('.pass')));
+
+document.getElementById('myform');
+myform.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const formdata= new FormData(myform);
+    const urlEncoded= new URLSearchParams(formdata).toString();
+    try {
+
+        const response = await fetch('/register',{
+            method:'post',
+            headers:{
+                'content-Type':'application/x-www-form-urlencoded'
+            },
+            body:urlEncoded
+        });
+        console.log(response);
+        if (response.redirected) {
+            window.location.href = response.url;
+            return;
+        }
+        const result = await response.json();
+
+            const messageElement = document.getElementById("responseMessage");
+
+            if (response.ok) {
+                messageElement.classList.remove('hidden');
+                messageElement.innerText = result.error;
+            console.log(Object.values(formdata));
+            }
+    }
+
+    catch(e){
+        console.error("Error:", e);
+        document.getElementById("responseMessage").innerText = "An error occurred!";
+        }
+
+        })
+        function togglepassword(param){
+           const input = param.parentElement.childNodes[4];
+if(param.classList.contains('fa-eye')){
+    input.type='text';
+    param.classList.remove('fa-eye');
+    param.classList.add('fa-eye-slash');
+}
+else if(param.classList.contains('fa-eye-slash')){
+                input.type='password';
+                param.classList.remove('fa-eye-slash');
+                param.classList.add('fa-eye');
+            }
+else console.log('ther is a problem');
+        }
+    </script>
+</html>

@@ -1,0 +1,72 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="/css/style.css"/>
+        <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css">
+        <title>Forgot Password</title>
+    </head>
+    <body>
+        <div class="top"><img src="/images/img8.png" alt="book"/><h1>Phantom Store</h1><img src="/images/img8.png" alt="book"/></div>
+        <div class="container">
+        <form id="myform" class="forgot-con">
+            <label>Enter Your Email</label>
+            <input type="email" name="email"/>
+            <div id="message" class="hidden"></div>
+            <button type="submit">Submit</button>
+        </form>
+        </div>
+        <div class="footer">
+            <ul>
+                <li>
+                    Contact Us:
+                    <ul class="contact" id="contact">
+                    <li><a href="tel:+251989566114" target="_blank" style="color:gray"><i class="fas fa-phone"></i> +251-989-566-114</a></li>
+                    <li><a href="mailto:biniyamgashe@gmail.com" target="_blank" style="color:rgb(40,100,250)"><i class="fas fa-envelope"></i> Email</a></li>
+                    <li><a href="https://t.me/Bingashe" target="_blank" style="color:rgb(40,140,200)"><i class="fab fa-telegram"></i> telegram</a></li>
+                    <li><a href="https://wa.me/251989566114" target="_blank"  style="color:rgb(40,100,40)"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                    <li><a href="https://www.facebook.com/username" target="_blank" style="color:blue"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://www.instagram.com/bin.gashe/" target="_blank"  style="color:rgb(180,20,100)"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/termandpolicy">Terms and Policies</a></li>
+                <li><a href="/"></a></li>
+            </ul>
+            <div>
+                <p>&copy2025. All rights are Reserved.</p>
+            </div>
+        </div>
+        <script>
+const form = document.querySelector('#myform');
+const message = document.querySelector('#message');
+form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    let formdata= new FormData(form);
+    let urlencoded= new URLSearchParams(formdata).toString();
+    const response = await fetch('/mypass-forgot',{
+        method:'post',
+        headers:{
+            'content-Type':'application/x-www-form-urlencoded'
+        },
+        body:urlencoded
+    });
+    console.log(response);
+const result = await response.json();
+    if(response.ok){
+                message.classList.remove('hidden');
+                message.style.color="green";
+                message.style.fontSize="small";
+                message.innerText=result.message;
+    }
+    else {
+        message.classList.remove('hidden');
+        message.style.color="red";
+        message.style.fontSize="small";
+        message.innerText=result.message;
+
+    }
+})
+        </script>
+    </body>
+    </html>

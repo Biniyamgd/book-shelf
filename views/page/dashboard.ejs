@@ -1,0 +1,251 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="/css/dashboard.css"/>
+        <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css">
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <div class="nav">
+            <div class="headline">
+            <section><img src="" alt="brand"/></section>
+            <section class="user"> Hello <%=user.name %></section>
+            <section class="navlink">
+                <div><a href="/category">Category</a></div>
+                <div><a href="/about">About</a></div>
+                <div><a href="#trending">Trending</a></div>
+                <div><a href="#topRated">Top Rated</a></div>
+                <div><a href="/order">Orders</a></div>
+            </section>
+            </div>
+            <div class="canvas">
+                <h1>
+                Books You can explore <span style="color:white">Beyond</span> the visible.
+                </h1>
+            </div>
+        </div>
+        <div class="cart-container">
+            <div class="cart-img">
+                <img src="/images/img11.png">
+                <div class="badge">45</div>
+            </div>
+            <div class="cart hidden">
+           <h4>YOUR ORDERS</h4>
+           <div  class="order-list">
+           <% if(orders.length>0) { %>
+           <% orders.forEach((value)=>{ %>
+               <div class="order">
+                   <img src="/images/gatsby.png">
+                   <div>
+                       <header><%= value.name %> <span>$<%= value.price %></span></header>
+                       <section><%= value.author %></section>
+                   </div>
+                   <div class="cancel-container">
+                   <button><i class="fa fa-times"></i></button>
+                   </div>
+               </div>
+           <hr>
+           <% console.log("i am working") %>
+           <div>estimated total</div>
+           <% }) %>
+           <%} else{ %>
+           <div>
+               <h4>No Orders yet</h4>
+           </div>
+           <% } %>
+           </div>
+           <button class="but">check out</button>
+            </div>
+        </div>
+        <div>
+            <div class="carousel" id="trending">
+                <button class="prev"><i class="fas fa-arrow-left"></i></button>
+        <div class="card">
+           <h1>Trending</h1>
+           <div class="card-body">
+               <div  class="in">
+               <img src="/images/money.png"/>
+               <div>
+                   <h3>
+                       <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                   </h3>
+               <p>
+    Habits shape our daily lives more than we realize.
+               </p>
+               <div class="button">
+               <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+               </div>
+               </div>
+               </div>
+               <div class="in">
+                   <img src="/images/subtle.png"/>
+                   <div>
+                       <h3>
+                           <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                       </h3>
+                   <p>
+        Habits shape our daily lives more than we realize.
+                   </p>
+                   <div class="button">
+                   <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+                   </div>
+                   </div>
+                   </div>
+               <div  class="in">
+                   <img src="/images/graphic.png"/>
+                   <div>
+                       <h3>
+                           <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                       </h3>
+                   <p>
+        Habits shape our daily lives more than we realize.
+                   </p>
+                   <div class="button">
+                   <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+                   </div>
+                   </div>
+                   </div>
+
+                   <div  class="in">
+                       <img src="/images/gatsby.png"/>
+                       <div>
+                           <h3>
+                               <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                           </h3>
+                               <p>
+            Habits shape our daily lives more than we realize.
+                       </p>
+                       <div class="button">
+                       <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+                       </div>
+                       </div>
+                       </div>
+           </div>
+        </div>
+        <button class="next"><i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="card">
+                <h1>Category</h1>
+                <div class="card-body">
+                    <ul>
+                        <li><a href="/fiction/list"><img src="/images/novel.png"></a></li>
+                        <li><a href="/science/list"><img src="/images/science.png"></a></li>
+                        <li><a href="/technology/list"><img src="/images/computing.png"></a></li>
+                        <li><a href="/psychology/list"><img src="/images/psycho.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel" id="topRated">
+                <button class="prev"><i class="fas fa-arrow-left"></i></button>
+        <div class="card">
+           <h1>Top Rated</h1>
+           <div class="card-body">
+               <div  class="in">
+               <img src="/images/crime.png"/>
+               <div>
+                   <h3>
+                       <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                   </h3>
+               <p>
+    Habits shape our daily lives more than we realize.
+               </p>
+               <div class="button">
+               <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+               </div>
+               </div>
+               </div>
+               <div class="in">
+                   <img src="/images/subtle.png"/>
+                   <div>
+                       <h3>
+                           <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                       </h3>
+                       <p>
+            Habits shape our daily lives more than we realize.
+                   </p>
+                   <div class="button">
+                   <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+                   </div>
+                   </div>
+                   </div>
+               <div  class="in">
+                   <img src="/images/graphic.png"/>
+                   <div>
+                       <h3>
+                           <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                       </h3>
+                       <p>
+            Habits shape our daily lives more than we realize.
+                   </p>
+                   <div class="button">
+                   <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+                   </div>
+                   </div>
+                   </div>
+
+                   <div  class="in">
+                       <img src="/images/forest.jpg"/>
+                       <div>
+                           <h3>
+                               <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                           </h3>
+                               <p>
+                    Habits shape our daily lives more than we realize.
+                       </p>
+                       <div class="button">
+                       <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+                       </div>
+                       </div>
+                       </div>
+           </div>
+        </div>
+        <button class="next"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <ul>
+                <li>
+                    Contact Us:
+                    <ul class="contact">
+                    <li><a href="tel:+251989566114" target="_blank" style="color:gray"><i class="fas fa-phone"></i> +251-989-566-114</a></li>
+                    <li><a href="mailto:biniyamgashe@gmail.com" target="_blank" style="color:rgb(40,100,250)"><i class="fas fa-envelope"></i> Email</a></li>
+                    <li><a href="https://t.me/Bingashe" target="_blank" style="color:rgb(40,140,200)"><i class="fab fa-telegram"></i> telegram</a></li>
+                    <li><a href="https://wa.me/251989566114" target="_blank"  style="color:rgb(40,100,40)"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                    <li><a href="https://www.facebook.com/username" target="_blank" style="color:blue"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://www.instagram.com/bin.gashe/" target="_blank"  style="color:rgb(180,20,100)"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/termandpolicy">Terms and Policies</a></li>
+                <li><a href="/"></a></li>
+            </ul>
+            <div>
+                <p>&copy2025. All rights are Reserved.</p>
+            </div>
+        </div>
+
+        <script>
+           const cart = document.querySelector('.cart');
+           document.querySelector('.cart-img img').addEventListener('click',()=>{
+               cart.classList.contains('hidden') ? cart.classList.remove('hidden'):
+                   cart.classList.add('hidden');
+           });
+            const carousel = document.querySelector('.card2 .card-body');
+            console.log(carousel);
+            const nextBtn = document.querySelector('.next');
+            const prevBtn = document.querySelector('.prev');
+            const cardWidth = document.querySelector('.in').offsetWidth; // Card width + gap
+            console.log(document.querySelector('.in'));
+            nextBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: 50, behavior: 'smooth' });
+                console.log(cardWidth);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -50, behavior: 'smooth' });
+            });
+        </script>
+    </body>
+    </html>

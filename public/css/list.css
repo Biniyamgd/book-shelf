@@ -1,0 +1,112 @@
+.nav{
+    background-color:rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:space-between;
+    color:white;
+    align-items:center;
+    position:sticky;
+}
+
+.brand img{
+height:20px;
+border-radius:50%;
+margin-left:10px;
+}
+
+.navlinks{
+    display:flex;
+    cursor:pointer;
+}
+
+.navlink div{
+}
+
+.navlinks div a{
+    display:inline-flex;
+    text-decoration:none;
+    color:rgb(210,210,210);
+    padding:10px 20px;
+    min-width:60px;
+    justify-content:center;
+}
+
+.navlinks div a:hover{
+    color:rgb(20,20,20,0.5);
+}
+
+.footer{
+        min-height:200px;
+        background-color:rgba(20,20,20,0.3);
+        padding:10px 6px;
+        margin-top:10px;
+    }
+
+    .card{
+        padding: 20px 50px;
+        width:80%;
+        margin:20px auto;
+    }
+
+    .card-body{
+        margin:20px 0;
+        display:flex;
+        justify-content:center;
+        color:black;
+    }
+
+
+    .card-body img{
+    height:200px;
+    margin-right:30px;
+    }
+
+
+    .card-body div{
+        padding:0 30px;
+        width:70vw;
+    }
+
+
+    .card-body button{
+    background-color:orange;
+    padding:10px 20px;
+    border-radius:6px;
+    border:none;
+    cursor:pointer;
+    }
+
+
+    .footer ul{
+        list-style:none;
+    }
+
+    .footer ul li{
+        margin:6px 0;
+    }
+
+    .footer ul li a{
+        text-decoration:none;
+        cursor:pointer;
+    }
+
+    .footer div p{
+        width:max-content;
+        margin:auto;
+        color:rgb(170,100,0,0.9);
+        font-size:small;
+    }
+
+    .contact{
+        display:flex;
+        justify-content:space-between;
+        width:65%;
+    }
+
+    .contact li{
+        padding:10px;
+        margin-left:10px;
+    }
+
+    .contact li a{
+        color:rgb(160,160,160);
+    }

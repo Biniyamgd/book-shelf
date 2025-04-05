@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.8",
+    "argon2": "^0.41.1",
+    "axios": "^1.8.4",
+    "cookies": "^0.9.1",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0",
+    "nodemailer": "^6.10.0",
+    "nodemon": "^3.1.9",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "scripts": {
+    "dev": "nodemon app.js",
+    "build": "node app.js"
+  }
+}
