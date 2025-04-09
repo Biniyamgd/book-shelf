@@ -5,6 +5,11 @@ class BookController{
         Book.updateRate(req.body.rate,1,5);
         res.redirect('/review');
     }
+
+static orderbook(req, res){
+    
+    {}
+}
     static delete(req,res){
         Book.deleteBook(req.user.id);
         res.redirect('/list');
