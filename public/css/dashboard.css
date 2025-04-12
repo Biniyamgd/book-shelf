@@ -103,9 +103,9 @@ cursor:pointer;
 }
 
 .badge{
-border-radius:40%;
+border-radius:20%;
 max-height:fit-content;
-padding:1px 4px;
+padding: 0 4px;
 color:white;
 position:absolute;
 background-color:red;

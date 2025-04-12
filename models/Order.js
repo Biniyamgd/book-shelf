@@ -52,8 +52,8 @@ class Order{
             });
         })}
 
-    static deleteOrder(userid,bookid){
-        db.query(`delete from orders where user_id = ?, book_id = ?, status = ?`,[userid,bookid,"pending"],(err,result)=>{
+    static deleteOrder(id){
+        db.query(`delete from orders where id = ?`,[    id],(err,result)=>{
             if(err) console.log(err)
         })
     }

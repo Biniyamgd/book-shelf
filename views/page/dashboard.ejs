@@ -42,9 +42,10 @@
                        <header><%= value.name %> <span>$<%= value.price %></span></header>
                        <section><%= value.author %></section>
                    </div>
-                   <div class="cancel-container">
-                   <button><i class="fa fa-times"></i></button>
-                   </div>
+                   <form class="cancel-container" onSubmit="cancelOrder(this,event)">
+                       <input type="hidden" name="order_id" value="<%= value.order_id %>">
+                   <button type="submit"><i class="fa fa-times"></i></button>
+                   </form>
                </div>
            <hr>
            <div>estimated total</div>
@@ -165,6 +166,17 @@
                     'content-Type':'application/x-www-form-urlencoded'
                 },
                 body:urlencoded
+            })
+            }
+
+            async function cancelOrder(obj,e){
+                e.preventDefault();
+            const res = await fetch('/order/delete',{
+                method:'delete',
+                headers:{
+                    'content-Type':'application/json'
+                },
+                body:JSON.stringify({order_id:e.target.order_id.value})
             })
             }
            const cart = document.querySelector('.cart');

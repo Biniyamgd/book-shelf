@@ -17,6 +17,11 @@ class BookController{
             res.status(500).json({ error: 'Something went wrong.' });
         }
      }
+     static async deleteOrder(req, res){
+    Order.deleteOrder(req.body.order_id);
+    res.redirect('/dashboard');
+
+      }
     static delete(req,res){
         Book.deleteBook(req.user.id);
         res.redirect('/list');
