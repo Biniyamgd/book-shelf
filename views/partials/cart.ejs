@@ -1,0 +1,31 @@
+            <div class="cart-img">
+                <img src="/images/img11.png">
+                <div class="badge"><%= orders.length || 0 %></div>
+            </div>
+            <div class="cart hidden">
+           <h4>YOUR ORDERS</h4>
+           <div  class="order-list">
+           <% if(orders.length>0) { %>
+           <% orders.forEach((value)=>{ %>
+               <div class="order">
+                   <img src="/images/gatsby.png">
+                   <div>
+                       <header><%= value.name %> <span>$<%= value.price %></span></header>
+                       <section><%= value.author %></section>
+                   </div>
+                   <form class="cancel-container" onSubmit="deleteCart(this,event)">
+                   <input type="hidden" name="order_id" value="<%=value.order_id%>">
+                   <button type="submit"><i class="fa fa-times"></i></button>
+                   </form>
+               </div>
+           <hr>
+           <div>estimated total</div>
+           <% }) %>
+           <%} else{ %>
+           <div>
+               <h4>No Orders yet</h4>
+           </div>
+           <% } %>
+           </div>
+           <button class="but">check out</button>
+            </div>

@@ -1,4 +1,5 @@
 const Book = require('../models/Book');
+const Order = require('../models/Order');
 
 class BookController{
     static rate(req,res){
@@ -6,10 +7,16 @@ class BookController{
         res.redirect('/review');
     }
 
-static orderbook(req, res){
-    
-    {}
-}
+     static async addOrder(req, res){
+        try{
+         const order= await Order.insertOrder(req.body.book_id, req.user.id);
+            if(order.result) return res.redirect('/dashboard');
+            res.json(order.message);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Something went wrong.' });
+        }
+     }
     static delete(req,res){
         Book.deleteBook(req.user.id);
         res.redirect('/list');

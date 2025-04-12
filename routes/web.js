@@ -19,6 +19,7 @@ route.post('/mypass-forgot',UserController.forgot);
 route.get('/reset_password',PageController.resetpage);
 route.post('/reset-password',UserController.resetPassword);
 route.post('/rate',BookController.rate);
+route.post('/order/add',middleware, BookController.addOrder);
 route.all('*',(req,res)=>{
     throw Object.assign(new Error("I Don't Know"), { statusCode: 404 });
 })

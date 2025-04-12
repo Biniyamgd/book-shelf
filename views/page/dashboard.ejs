@@ -29,7 +29,7 @@
         <div class="cart-container">
             <div class="cart-img">
                 <img src="/images/img11.png">
-                <div class="badge">45</div>
+                <div class="badge"><%=orders.length%></div>
             </div>
             <div class="cart hidden">
            <h4>YOUR ORDERS</h4>
@@ -47,7 +47,6 @@
                    </div>
                </div>
            <hr>
-           <% console.log("i am working") %>
            <div>estimated total</div>
            <% }) %>
            <%} else{ %>
@@ -65,7 +64,7 @@
         <div class="card">
            <h1>Trending</h1>
            <div class="card-body">
-               <% if (trending>0){ %>
+               <% if (trending.length>0){ %>
                <% trending.forEach((book)=>{ %>
                <div  class="in">
                <img src="/images/money.png"/>
@@ -77,56 +76,18 @@
                    Author: <%= book.author %>
                </p>
                <div class="button">
-               <a href=`/book/<%= book.id %>`><button>Review</button></a><form><input type="hidden" name="book_id" value=`<%= book.id %>`><button type="submit" style="background-color:green;color:white">Add to Cart</button></form>
+               <a href=`/book/<%= book.id %>`><button>Review</button></a><form onSubmit="addToCart(this,event)"><input type="hidden" name="book_id" value="<%= book.id %>"><button type="submit" style="background-color:green;color:white">Add to Cart</button></form>
                </div>
                </div>
                </div>
                <% })} else{ %>
-               
-               <div class="in">
-                   <img src="/images/subtle.png"/>
-                   <div>
-                       <h3>
-                           <article>Rate | <span style="color:orange"> 4.7</span></article> <span style="margin-:10px;">$4.6</span>
-                       </h3>
-                   <p>
-        Habits shape our daily lives more than we realize.
-                   </p>
-                   <div class="button">
-                   <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
-                   </div>
-                   </div>
-                   </div>
                <div  class="in">
-                   <img src="/images/graphic.png"/>
-                   <div>
-                       <h3>
-                           <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
-                       </h3>
-                   <p>
-        Habits shape our daily lives more than we realize.
-                   </p>
-                   <div class="button">
-                   <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
-                   </div>
-                   </div>
-                   </div>
-
-                   <div  class="in">
-                       <img src="/images/gatsby.png"/>
-                       <div>
-                           <h3>
-                               <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
-                           </h3>
-                               <p>
-            Habits shape our daily lives more than we realize.
-                       </p>
-                       <div class="button">
-                       <a href="/book/1"><button>Review</button></a><form method='post' onSubmit='addToCart(this,event)'><button style="background-color:green;color:white">Add to Cart</button></form>
-                       </div>
-                       </div>
-                       </div>
+                       <h2>
+                           Nothing to Display.....
+                       </h2>
            </div>
+           <% }%>
+        </div>
         </div>
         <button class="next"><i class="fas fa-arrow-right"></i></button>
             </div>
@@ -146,65 +107,29 @@
         <div class="card">
            <h1>Top Rated</h1>
            <div class="card-body">
+               <% if (topRated.length>0){ %>
+               <% topRated.forEach((book)=>{ %>
                <div  class="in">
                <img src="/images/crime.png"/>
                <div>
                    <h3>
-                       <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
+                       <article>Rate | <span style="color:orange"><%= book.rate %></span></article> <span style="margin-:10px;">$<%= book.price %></span>
                    </h3>
-               <p>
-    Habits shape our daily lives more than we realize.
-               </p>
+               <p>Author: <%= book.author %></p>
                <div class="button">
-               <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
+                   <a href=`/book/<%= book.id %>`><button>Review</button></a><form onSubmit="addToCart(this,event)"><input type="hidden" name="book_id" value="<%= book.id %>"><button type="submit" style="background-color:green;color:white">Add to Cart</button></form>
+                   </div>
                </div>
                </div>
-               </div>
-               <div class="in">
-                   <img src="/images/subtle.png"/>
-                   <div>
-                       <h3>
-                           <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
-                       </h3>
-                       <p>
-            Habits shape our daily lives more than we realize.
-                   </p>
-                   <div class="button">
-                   <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
-                   </div>
-                   </div>
-                   </div>
+               <% })} else{ %>
                <div  class="in">
-                   <img src="/images/graphic.png"/>
-                   <div>
-                       <h3>
-                           <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
-                       </h3>
-                       <p>
-            Habits shape our daily lives more than we realize.
-                   </p>
-                   <div class="button">
-                   <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
-                   </div>
-                   </div>
-                   </div>
-
-                   <div  class="in">
-                       <img src="/images/forest.jpg"/>
-                       <div>
-                           <h3>
-                               <article>Rate | <span style="color:orange">6.3</span></article> <span style="margin-:10px;">$4.6</span>
-                           </h3>
-                               <p>
-                    Habits shape our daily lives more than we realize.
-                       </p>
-                       <div class="button">
-                       <a href="/book/1"><button>Review</button></a><a href="/book/1"><button style="background-color:green;color:white">Add to Cart</button></a>
-                       </div>
-                       </div>
-                       </div>
+                       <h2>
+                           Nothing to Display.....
+                       </h2>
            </div>
+           <% }%>
         </div>
+           </div>
         <button class="next"><i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
@@ -231,11 +156,15 @@
         </div>
 
         <script>
-            async function addTocart(obj,e){
-
-            fetch('/order',{
+            async function addToCart(obj,e){
+                e.preventDefault();
+                const urlencoded = new URLSearchParams(new FormData(obj)).toString();
+            const res = await fetch('/order/add',{
                 method:'post',
-
+                headers:{
+                    'content-Type':'application/x-www-form-urlencoded'
+                },
+                body:urlencoded
             })
             }
            const cart = document.querySelector('.cart');
