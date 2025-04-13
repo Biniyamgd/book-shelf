@@ -20,7 +20,8 @@ route.get('/reset_password',PageController.resetpage);
 route.post('/reset-password',UserController.resetPassword);
 route.post('/rate',BookController.rate);
 route.post('/order/add',middleware, BookController.addOrder);
-route.delete('/order/delete',middleware, BookController.deleteOrder);
+route.post('/order/delete',middleware, BookController.deleteOrder);
+route.get('/orders/partial',middleware,BookController.orderPartials);
 route.all('*',(req,res)=>{
     throw Object.assign(new Error("I Don't Know"), { statusCode: 404 });
 })

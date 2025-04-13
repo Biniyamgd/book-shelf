@@ -8,15 +8,24 @@ class BookController{
     }
 
      static async addOrder(req, res){
-        try{
-         const order= await Order.insertOrder(req.body.book_id, req.user.id);
-            if(order.result) return res.redirect('/dashboard');
-            res.json(order.message);
-        } catch (err) {
+         try{
+             const insert= await Order.insertOrder(req.body.book_id, req.user.id);
+             if(insert.result){
+                 return res.status(200).json({message:insert.result});
+             }
+            res.json(insert.message);
+        }
+          catch (err){
             console.error(err);
             res.status(500).json({ error: 'Something went wrong.' });
         }
      }
+
+     static async orderPartials(req,res){
+         const order = await Order.getOrder(req.user.id);
+         return res.render('partials/cart',{orders:order});
+     }
+
      static async deleteOrder(req, res){
     Order.deleteOrder(req.body.order_id);
     res.redirect('/dashboard');

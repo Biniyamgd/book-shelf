@@ -42,10 +42,7 @@
                        <header><%= value.name %> <span>$<%= value.price %></span></header>
                        <section><%= value.author %></section>
                    </div>
-                   <form class="cancel-container" onSubmit="cancelOrder(this,event)">
-                       <input type="hidden" name="order_id" value="<%= value.order_id %>">
-                   <button type="submit"><i class="fa fa-times"></i></button>
-                   </form>
+                   <button class="remove-from-cart-btn" data-order-id="<%= value.order_id %>"><i class="fa fa-times" ></i></button>
                </div>
            <hr>
            <div>estimated total</div>
@@ -77,7 +74,7 @@
                    Author: <%= book.author %>
                </p>
                <div class="button">
-               <a href=`/book/<%= book.id %>`><button>Review</button></a><form onSubmit="addToCart(this,event)"><input type="hidden" name="book_id" value="<%= book.id %>"><button type="submit" style="background-color:green;color:white">Add to Cart</button></form>
+               <a href=`/book/<%= book.id %>`><button>Review</button></a><button style="background-color:green;color:white" class="add-to-cart-btn" data-book-id="<%= book.id %>">Add to Cart</button>
                </div>
                </div>
                </div>
@@ -118,7 +115,8 @@
                    </h3>
                <p>Author: <%= book.author %></p>
                <div class="button">
-                   <a href=`/book/<%= book.id %>`><button>Review</button></a><form onSubmit="addToCart(this,event)"><input type="hidden" name="book_id" value="<%= book.id %>"><button type="submit" style="background-color:green;color:white">Add to Cart</button></form>
+
+                   <a href=`/book/<%= book.id %>`><button>Review</button></a><button style="background-color:green;color:white" class="add-to-cart-btn" data-book-id="<%= book.id %>">Add to Cart</button>
                    </div>
                </div>
                </div>
@@ -154,31 +152,28 @@
             <div>
                 <p>&copy2025. All rights are Reserved.</p>
             </div>
+
         </div>
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            async function addToCart(obj,e){
-                e.preventDefault();
-                const urlencoded = new URLSearchParams(new FormData(obj)).toString();
-            const res = await fetch('/order/add',{
-                method:'post',
-                headers:{
-                    'content-Type':'application/x-www-form-urlencoded'
-                },
-                body:urlencoded
-            })
-            }
+            $(document).ready(function () {
+                $('.add-to-cart-btn').on('click', function () {
+                    const bookId = $(this).data('book-id');
 
-            async function cancelOrder(obj,e){
-                e.preventDefault();
-            const res = await fetch('/order/delete',{
-                method:'delete',
-                headers:{
-                    'content-Type':'application/json'
-                },
-                body:JSON.stringify({order_id:e.target.order_id.value})
-            })
-            }
+                    $.post('/order/add', { book_id: bookId }, function (data) {
+                        $('.order-list').load('/orders/partial');
+                    })});
+
+                $('.order-list').on('click', '.remove-from-cart-btn', function () {
+                        const bookId = $(this).data('order-id');
+
+                    $.post('/order/delete', { order_id: bookId }, function (data) {
+                            $('.order-list').load('/orders/partial');
+
+                    })})
+            });
+        </script>
+        <script>
            const cart = document.querySelector('.cart');
            document.querySelector('.cart-img img').addEventListener('click',()=>{
                cart.classList.contains('hidden') ? cart.classList.remove('hidden'):

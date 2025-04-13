@@ -1,10 +1,4 @@
-            <div class="cart-img">
-                <img src="/images/img11.png">
-                <div class="badge"><%= orders.length || 0 %></div>
-            </div>
-            <div class="cart hidden">
-           <h4>YOUR ORDERS</h4>
-           <div  class="order-list">
+
            <% if(orders.length>0) { %>
            <% orders.forEach((value)=>{ %>
                <div class="order">
@@ -25,7 +19,4 @@
            <div>
                <h4>No Orders yet</h4>
            </div>
-           <% } %>
-           </div>
-           <button class="but">check out</button>
-            </div>
+           <% } %>  
