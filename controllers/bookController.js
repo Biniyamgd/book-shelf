@@ -38,7 +38,7 @@ class BookController{
     res.redirect('/dashboard');
 
       }
-    static delete(req,res){
+    static deleteBook(req,res){
         Book.deleteBook(req.user.id);
         res.redirect('/list');
     }
