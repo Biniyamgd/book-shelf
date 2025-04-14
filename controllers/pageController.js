@@ -32,9 +32,11 @@ class PageController {
 
      static review(req,res){
          const book = Book.getSingle(req.params.id);
+         Book.updateReview(req.params.id);
          const user = req.user;
-         res.render('page/review',{ user, book});
+         res.json({message:"successfully reviewed"})
      }
+
 
      static category(req, res){
          res.render('page/category');

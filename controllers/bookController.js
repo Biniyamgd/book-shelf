@@ -3,8 +3,15 @@ const Order = require('../models/Order');
 
 class BookController{
     static rate(req,res){
-        Book.updateRate(req.body.rate,1,5);
-        res.redirect('/review');
+        let {newrate,oldrate,rate_count} = req.body;
+        if(oldrate!==0){
+            newrate = (oldrate*rate_count+newrate)/(rate_count+1)
+        }
+        Book.updateRate(newrate,req.params.id,req.user.id,(err,result)=>{
+            if(err) return res.json({message:err.message});
+            res.json({message:result.message});
+        });
+
     }
 
      static async addOrder(req, res){

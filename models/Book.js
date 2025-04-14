@@ -55,22 +55,24 @@ class Book {
         });
     }
 
-    static updateRate(newrate, bookid,userid){
-        this.createRating();
-        db.query(`update book set rate = ((rate * rate_count) + ?)/(rate_count+1), rate_count =  rate_count + 1 where id = ?`,[newrate,bookid],(err,result)=>{
-           if(err) console.log(err);
+    static updateRate(newrate, bookid,userid,callback){
+        this.Rate(userid,bookid,(err,result)=>{
+            if(err) return callback(err);
+            db.query(`update book set rate = ?, rate_count =  rate_count + 1 where id = ?`,[newrate,bookid],(err,result)=>{
+               if(err) callback(null,{message:"It is rated successfully"});
+            });
         });
-        this.Rate(userid,bookid);
     }
 
     static updateReview(bookid){
         db.query(`update book set review = review + 1 where id = ?`,[bookid],(err,result)=>{
-           if(err) console.log(err);
+           if(err) return console.log(err);
+           console.log(result);
         });
     }
 
     static createRating(){
-        db.query('create table if not exists rate (id int auto_increment primary key, user_id not null, book_id not null, unique (userid, book_id), foreign key (user_id) references  user(id) on delete cascade, foreign key (book_id) references book(id) on delete cascade)',
+        db.query('create table if not exists rate (id int auto_increment primary key, user_id int not null, book_id int not null, unique (user_id, book_id), foreign key (user_id) references  user(id) on delete cascade, foreign key (book_id) references book(id) on delete cascade)',
         (err,result)=>{
                 if(err) console.log(err);
             });
@@ -83,12 +85,16 @@ class Book {
     }
 
 
-    static Rate(user,book){
+    static Rate(user,book, callback){
         this.createRating();
         const rate={user_id:user, book_id:book};
         db.query('insert into rate set ?',rate,(err,result)=>{
-            if(err) console.log(err);
-        })
+            if(err) {
+                if(err.code==='ER_DUP_ENTRY') return callback(new Error('you have already rated the book.'));
+                return callback(err);
+            }
+            callback(null,result);
+})
     }
 
 }
